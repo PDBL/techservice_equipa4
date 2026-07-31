@@ -69,3 +69,21 @@ CREATE TABLE historico_ordens_servico (
     deleted_at DATETIME NULL,
     CONSTRAINT fk_historico_ordem FOREIGN KEY (id_ordem) REFERENCES ordens_servico(id_ordem)
 )Engine=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ====================================
+
+use techservice_equipa4;
+
+drop table if exists prioridade_os;
+
+create table prioridade_os (
+
+id_prioridade INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(50),
+descricao VARCHAR(255),
+nivel INT NOT NULL
+	CHECK (nivel in (1, 2, 3)),
+    
+ativo TINYINT NOT NULL DEFAULT 1
+	CHECK (ativo IN (0, 1))
+    );
