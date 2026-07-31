@@ -7,7 +7,6 @@ def inserir_equipamento(
     marca,
     modelo,
     numero_serie,
-    data_compra,
     observacoes
 ):
 
@@ -17,7 +16,6 @@ def inserir_equipamento(
         marca=marca,
         modelo=modelo,
         numero_serie=numero_serie,
-        data_compra=data_compra,
         observacoes=observacoes
     )
 
@@ -39,7 +37,7 @@ def listar_cliente(id_cliente):
     return equipamento_repository.listar_por_cliente(id_cliente)
 
 
-def atualizar_equipamento(id_equipamento, id_cliente, tipo, marca, modelo, numero_serie, data_compra, observacoes):
+def atualizar_equipamento(id_equipamento, id_cliente, tipo, marca, modelo, numero_serie, observacoes):
 
     equipamento = Equipamento(
         id_equipamento=id_equipamento,
@@ -48,7 +46,7 @@ def atualizar_equipamento(id_equipamento, id_cliente, tipo, marca, modelo, numer
         marca=marca,
         modelo=modelo,
         numero_serie=numero_serie,
-        data_compra=data_compra,
+
         observacoes=observacoes
     )
 
