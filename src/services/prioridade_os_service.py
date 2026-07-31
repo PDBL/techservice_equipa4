@@ -25,5 +25,6 @@ def listar_prioridades():
 def atualizar_prioridade(prioridade):
     prioridade_os_repository.atualizar(prioridade)
     
-def apagar_prioridade(id_prioridade):
-    prioridade_os_repository.excluir(id_prioridade)
+def excluir_prioridade(prioridade):
+    prioridade_os_repository.excluir(prioridade)
+    
