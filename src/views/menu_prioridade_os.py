@@ -56,7 +56,7 @@ def menu_prioridade_os():
         elif opcao == "3":
 
             id = input("ID: ")
-            prioridades = procurar_prioridade_id(nome)
+            prioridades = procurar_por_id(nome)
 
             print()
 
