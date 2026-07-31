@@ -7,7 +7,6 @@ class Equipamento:
         marca,
         modelo,
         numero_serie,
-        data_compra=None,
         observacoes="",
         id_equipamento=None,
         status=1
@@ -18,6 +17,5 @@ class Equipamento:
         self.marca = marca
         self.modelo = modelo
         self.numero_serie = numero_serie
-        self.data_compra = data_compra
         self.observacoes = observacoes
         self.status = status
