@@ -30,4 +30,4 @@ REFERENCES techservice_equipa4.prioridade_os(id_prioridade)
 ON DELETE SET NULL
 ON UPDATE CASCADE;
 
-----------------------------------------------------------
+-----------------------Script-------------------------------
