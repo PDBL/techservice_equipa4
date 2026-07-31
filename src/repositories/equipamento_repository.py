@@ -7,12 +7,12 @@ def inserir(equipamento):
 
     sql = """
         INSERT INTO equipamentos
-        (id_cliente, tipo, marca, modelo, numero_serie, data_compra, observacoes)
+        (id_cliente, tipo, marca, modelo, numero_serie, observacoes)
         VALUES
-        (%s, %s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s)
     """
 
-    valores = (equipamento.id_cliente, equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie, equipamento.data_compra, equipamento.observacoes)
+    valores = (equipamento.id_cliente, equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie, equipamento.observacoes)
 
     cursor.execute(sql, valores)
     conexao.commit()
@@ -37,7 +37,6 @@ def listar():
             marca,
             modelo,
             numero_serie,
-            data_compra,
             observacoes,
             status,
             created_at,
@@ -130,14 +129,13 @@ def atualizar(equipamento):
             marca = %s,
             modelo = %s,
             numero_serie = %s,
-            data_compra = %s,
             observacoes = %s,
             updated_at = NOW()
         WHERE id_equipamento = %s
         AND status = 1
     """
 
-    valores = (equipamento.id_cliente, equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie, equipamento.data_compra, equipamento.observacoes, equipamento.id_equipamento)
+    valores = (equipamento.id_cliente, equipamento.tipo, equipamento.marca, equipamento.modelo, equipamento.numero_serie, equipamento.observacoes, equipamento.id_equipamento)
 
     cursor.execute(sql, valores)
     conexao.commit()
