@@ -1,7 +1,9 @@
+from src.views import menu_prioridade_os
 from src.views.menu_clientes import menu_clientes
 from src.views.menu_equipamentos import menu_equipamentos
 from src.views.menu_ordens import menu_ordens
 from src.views.menu_historico import menu_historico
+from src.views.menu_prioridade_os import menu_prioridade_os
 from src.utils.helpers import limpar_ecra, pausa
 
 def menu_principal():
@@ -17,6 +19,7 @@ def menu_principal():
         print("2 - Equipamentos")
         print("3 - Ordens de Serviço")
         print("4 - Histórico")
+        print("5 - Prioridades")
         print("0 - Sair")
 
         opcao = input("\nEscolha uma opção: ")
@@ -33,6 +36,9 @@ def menu_principal():
         elif opcao == "4":
             menu_historico()
 
+        elif opcao == "5":
+            menu_prioridade_os()
+            
         elif opcao == "0":
             print("\nObrigado por utilizar o TechService.")
             break
