@@ -6,7 +6,7 @@ def inserir(historico):
     cursor = conexao.cursor()
 
     sql = """
-        INSERT INTO historico_ordens_servico
+        INSERT INTO historico_ordens
         (id_ordem, status_anterior, status_novo, observacao)
         VALUES
         (%s, %s, %s, %s)
@@ -31,9 +31,8 @@ def listar():
 
     sql = """
         SELECT *
-        FROM historico_ordens_servico
+        FROM historico_ordens
         WHERE status = 1
-        ORDER BY data_alteracao DESC
     """
 
     cursor.execute(sql)
@@ -51,7 +50,7 @@ def procurar_por_id(id_historico):
 
     sql = """
         SELECT *
-        FROM historico_ordens_servico
+        FROM historico_ordens_
         WHERE id_historico = %s
         AND status = 1
     """
@@ -71,10 +70,9 @@ def listar_por_ordem(id_ordem):
 
     sql = """
         SELECT *
-        FROM historico_ordens_servico
+        FROM historico_ordens
         WHERE id_ordem = %s
         AND status = 1
-        ORDER BY data_alteracao
     """
 
     cursor.execute(sql, (id_ordem,))
@@ -91,13 +89,12 @@ def atualizar(historico):
     cursor = conexao.cursor()
 
     sql = """
-        UPDATE historico_ordens_servico
+        UPDATE historico_ordens
         SET
             id_ordem = %s,
             status_anterior = %s,
             status_novo = %s,
             observacao = %s,
-            updated_at = NOW()
         WHERE id_historico = %s
         AND status = 1
     """
@@ -123,7 +120,7 @@ def excluir(id_historico):
     cursor = conexao.cursor()
 
     sql = """
-        UPDATE historico_ordens_servico
+        UPDATE historico_ordens
         SET
             status = 0,
             deleted_at = NOW()
@@ -144,7 +141,7 @@ def restaurar(id_historico):
     cursor = conexao.cursor()
 
     sql = """
-        UPDATE historico_ordens_servico
+        UPDATE historico_ordens
         SET
             status = 1,
             deleted_at = NULL,
@@ -166,7 +163,7 @@ def contar():
 
     sql = """
         SELECT COUNT(*)
-        FROM historico_ordens_servico
+        FROM historico_ordens
         WHERE status = 1
     """
 
