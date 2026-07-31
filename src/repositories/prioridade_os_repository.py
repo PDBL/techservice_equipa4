@@ -127,5 +127,3 @@ def restaurar(id_prioridade):
 
     cursor.close()
     conexao.close()
-    y
-
