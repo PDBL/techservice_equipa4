@@ -93,5 +93,38 @@ def atualizar(prioridade):
     cursor.close()
     conexao.close()
 
+def excluir(id_prioridade):
+    conexao = conectar()
+    cursor = conexao.cursor()
 
+    sql = """
+        UPDATE prioridade
+        SET nivel = 3,
+        WHERE id_prioridade = %s
+          AND status = 1
+    """
+
+    cursor.execute(sql, (id_prioridade,))
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
+
+def restaurar(id_prioridade):
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    sql = """
+        UPDATE prioridade_os
+        SET
+            nivel = 1,
+        WHERE id_prioridade = %s
+    """
+
+    cursor.execute(sql, (id_prioridade,))
+    conexao.commit()
+
+    cursor.close()
+    conexao.close()
 
