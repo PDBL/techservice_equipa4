@@ -5,8 +5,6 @@ class Cliente:
         nome,
         email,
         telefone="",
-        nif="",
-        morada="",
         id_cliente=None,
         status=1
     ):
@@ -14,6 +12,4 @@ class Cliente:
         self.nome = nome
         self.email = email
         self.telefone = telefone
-        self.nif = nif
-        self.morada = morada
         self.status = status

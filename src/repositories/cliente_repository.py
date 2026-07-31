@@ -5,10 +5,10 @@ def inserir(cliente):
     cursor = conexao.cursor()
 
     sql = """
-        INSERT INTO clientes (nome, telefone, email, nif, morada)
-        VALUES (%s, %s, %s, %s, %s)
+        INSERT INTO clientes (nome, telefone, email)
+        VALUES (%s, %s, %s)
     """
-    valores = (cliente.nome, cliente.telefone, cliente.email, cliente.nif, cliente.morada)
+    valores = (cliente.nome, cliente.telefone, cliente.email)
 
     cursor.execute(sql, valores)
     conexao.commit()
@@ -23,8 +23,7 @@ def listar():
     cursor = conexao.cursor(dictionary=True)
 
     sql = """
-        SELECT id_cliente, nome, telefone, email, nif,
-            morada, status, created_at, updated_at, deleted_at
+        SELECT id_cliente, nome, telefone, email, status, created_at, updated_at, deleted_at
         FROM clientes
         WHERE status = 1
         ORDER BY nome
@@ -42,8 +41,7 @@ def listar_inativos():
     cursor = conexao.cursor(dictionary=True)
 
     sql = """
-        SELECT id_cliente, nome, telefone, email, nif,
-               morada, status, created_at, updated_at, deleted_at
+        SELECT id_cliente, nome, telefone, email, status, created_at, updated_at, deleted_at
         FROM clientes
         WHERE status = 0
         ORDER BY nome
@@ -105,13 +103,11 @@ def atualizar(cliente):
         SET nome = %s,
             telefone = %s,
             email = %s,
-            nif = %s,
-            morada = %s,
             updated_at = NOW()
         WHERE id_cliente = %s
           AND status = 1
     """
-    valores = (cliente.nome, cliente.telefone, cliente.email, cliente.nif, cliente.morada, cliente.id_cliente)
+    valores = (cliente.nome, cliente.telefone, cliente.email, cliente.nif,)
 
     cursor.execute(sql, valores)
     conexao.commit()

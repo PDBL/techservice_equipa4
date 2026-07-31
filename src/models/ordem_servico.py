@@ -12,7 +12,6 @@ class OrdemServico:
         valor_pecas=0.00,
         desconto=0.00,
         valor_total=0.00,
-        observacoes="",
         id_ordem=None,
         status=1
     ):
@@ -27,5 +26,4 @@ class OrdemServico:
         self.valor_pecas = valor_pecas
         self.desconto = desconto
         self.valor_total = valor_total
-        self.observacoes = observacoes
         self.status = status
