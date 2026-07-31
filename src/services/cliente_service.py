@@ -2,12 +2,12 @@ from src.models.cliente import Cliente
 from src.repositories import cliente_repository
 from src.utils.validacoes import validar_texto_obrigatorio
 
-def inserir_cliente(nome, telefone, email, nif, morada):
+def inserir_cliente(nome, telefone, email):
 
     validar_texto_obrigatorio(nome, "Nome")
     validar_texto_obrigatorio(email, "Email")
 
-    cliente = Cliente(nome=nome, telefone=telefone, email=email, nif=nif, morada=morada)
+    cliente = Cliente(nome=nome, telefone=telefone, email=email)
 
     return cliente_repository.inserir(cliente)
 
@@ -31,9 +31,9 @@ def procurar_cliente_nome(nome):
     return cliente_repository.procurar_por_nome(nome)
 
 
-def atualizar_cliente(id_cliente, nome, telefone, email, nif, morada):
+def atualizar_cliente(id_cliente, nome, telefone, email):
 
-    cliente = Cliente(id_cliente=id_cliente, nome=nome, telefone=telefone, email=email, nif=nif, morada=morada)
+    cliente = Cliente(id_cliente=id_cliente, nome=nome, telefone=telefone, email=email)
 
     cliente_repository.atualizar(cliente)
 
