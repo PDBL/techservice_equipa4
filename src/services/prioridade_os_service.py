@@ -18,3 +18,12 @@ def inserir_prioridade(
             )
 
             return prioridade_os_repository.inserir(prioridade)
+        
+def listar_prioridades():
+    return prioridade_os_repository.listar()
+
+def atualizar_prioridade(prioridade):
+    prioridade_os_repository.atualizar(prioridade)
+    
+def apagar_prioridade(id_prioridade):
+    prioridade_os_repository.excluir(id_prioridade)
