@@ -1,4 +1,5 @@
 from src.models.prioridade_os import PrioridadeOS
+from src.repositories.prioridade_os_repository import procurar_por_id
 from src.services.prioridade_os_service import *
 from src.utils.helpers import pausa
 
@@ -37,7 +38,7 @@ def menu_prioridade_os():
 
         elif opcao == "2":
 
-            prioridades = listar_prioridade()
+            prioridades = listar_prioridades()
 
             print()
 
