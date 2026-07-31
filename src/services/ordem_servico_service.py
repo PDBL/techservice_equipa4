@@ -11,8 +11,8 @@ def inserir_ordem(
         valor_servico,
         valor_pecas,
         desconto,
-        valor_total,
-        observacoes
+        valor_total
+
 ):
 
     ordem = OrdemServico(
@@ -25,8 +25,8 @@ def inserir_ordem(
         valor_servico=valor_servico,
         valor_pecas=valor_pecas,
         desconto=desconto,
-        valor_total=valor_total,
-        observacoes=observacoes
+        valor_total=valor_total
+
     )
 
     return ordem_servico_repository.inserir(ordem)
