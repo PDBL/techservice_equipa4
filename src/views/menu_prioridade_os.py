@@ -28,7 +28,7 @@ def menu_prioridade_os():
             try:
                 inserir_prioridade(nome, descricao, nivel, ativo)
 
-                print("\Prioridade inserida com sucesso.")
+                print("\n Prioridade inserida com sucesso.")
 
             except ValueError as erro:
 
@@ -56,14 +56,14 @@ def menu_prioridade_os():
 
         elif opcao == "3":
 
-            id = input("ID: ")
-            prioridades = procurar_por_id(nome)
+            id_prioridade = input("ID: ")
+            prioridades = procurar_por_id(id_prioridade)
 
             print()
 
             for prioridade in prioridades:
 
-                print(prioridade["id_prioridade"], "-", prioridade["id"])
+                print(prioridade["id_prioridade"], "-", prioridade["nome"])
 
             pausa()
 
