@@ -22,35 +22,34 @@ def listar():
     conexao = conectar()
     cursor = conexao.cursor(dictionary=True)
 
-    sql = """
-        SELECT id_prioridade, nome, descricao, nivel, ativo)
-        FROM prioridades_os
-        ORDER BY nome
-    """
+    cursor.execute("""
+        SELECT id_prioridade, nome, descricao, nivel, ativo
+        FROM prioridade_os
+        ORDER BY nome;
+    """)
 
-    cursor.execute(sql)
-    prioridade = cursor.fetchall()
+    prioridades = cursor.fetchall()
 
     cursor.close()
     conexao.close()
-    return prioridade
+
+    return prioridades
 
 def procurar_por_id(id_prioridade):
-
     conexao = conectar()
     cursor = conexao.cursor(dictionary=True)
 
-    sql = """
+    cursor.execute("""
         SELECT *
         FROM prioridade_os
         WHERE id_prioridade = %s
-    """
+    """, (id_prioridade,))
 
-    cursor.execute(sql, (id_prioridade,))
     prioridade = cursor.fetchone()
 
     cursor.close()
     conexao.close()
+
     return prioridade
 
 
