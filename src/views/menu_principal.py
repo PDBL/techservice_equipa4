@@ -20,6 +20,7 @@ def menu_principal():
         print("3 - Ordens de Serviço")
         print("4 - Histórico")
         print("5 - Prioridades")
+        print("X - Prioridade OS")
         print("0 - Sair")
 
         opcao = input("\nEscolha uma opção: ")
@@ -37,6 +38,10 @@ def menu_principal():
             menu_historico()
 
         elif opcao == "5":
+            menu_prioridade_os()
+
+        elif opcao == "X":
+
             menu_prioridade_os()
             
         elif opcao == "0":

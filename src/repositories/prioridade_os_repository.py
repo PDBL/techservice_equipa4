@@ -23,9 +23,15 @@ def listar():
     cursor = conexao.cursor(dictionary=True)
 
     sql = """
-        SELECT id_prioridade, nome, descricao, nivel, ativo)
-        FROM prioridades_os
-        ORDER BY nome
+    SELECT
+        id_prioridade,
+        nome,
+        descricao,
+        nivel,
+        ativo
+    FROM prioridade_os
+    WHERE ativo = 1
+    ORDER BY nome
     """
 
     cursor.execute(sql)
@@ -61,7 +67,7 @@ def procurar_por_nome(nome):
 
     sql = """
         SELECT *
-        FROM prioridade
+        FROM prioridade_os
         WHERE nome LIKE %s
         ORDER BY nome
     """
@@ -78,14 +84,21 @@ def atualizar(prioridade):
     cursor = conexao.cursor()
 
     sql = """
-        UPDATE prioridade_os
-        SET nome = %s,
-            descricao = %s,
-            nivel = %s,
-        WHERE id_cliente = %s
-          AND status = 1
+    UPDATE prioridade_os
+    SET
+        nome=%s,
+        descricao=%s,
+        nivel=%s,
+        ativo=%s
+    WHERE id_prioridade=%s
     """
-    valores = (prioridade.nome, prioridade.descricao, prioridade.nivel. prioridade.ativo)
+    valores = (
+    prioridade.nome,
+    prioridade.descricao,
+    prioridade.nivel,
+    prioridade.ativo,
+    prioridade.id_prioridade
+)
 
     cursor.execute(sql, valores)
     conexao.commit()
@@ -98,10 +111,9 @@ def excluir(id_prioridade):
     cursor = conexao.cursor()
 
     sql = """
-        UPDATE prioridade
-        SET nivel = 3,
-        WHERE id_prioridade = %s
-          AND status = 1
+    UPDATE prioridade_os
+    SET ativo = 0
+    WHERE id_prioridade=%s
     """
 
     cursor.execute(sql, (id_prioridade,))
@@ -118,7 +130,7 @@ def restaurar(id_prioridade):
     sql = """
         UPDATE prioridade_os
         SET
-            nivel = 1,
+            ativo = 1
         WHERE id_prioridade = %s
     """
 
@@ -127,3 +139,23 @@ def restaurar(id_prioridade):
 
     cursor.close()
     conexao.close()
+
+def contar():
+
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute(
+        """
+        SELECT COUNT(*)
+        FROM prioridade_os
+        WHERE ativo=1
+        """
+    )
+
+    total = cursor.fetchone()[0]
+
+    cursor.close()
+    conexao.close()
+
+    return total

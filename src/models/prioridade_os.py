@@ -2,12 +2,13 @@ class PrioridadeOS:
 
     def __init__(
         self,
-        nome,
-        descricao,
-        nivel,
-        ativo,
-        id_prioridade=None
+        id_prioridade=None,
+        nome="",
+        descricao="",
+        nivel=1,
+        ativo=1
     ):
+
         self.id_prioridade = id_prioridade
         self.nome = nome
         self.descricao = descricao
